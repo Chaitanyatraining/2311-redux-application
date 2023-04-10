@@ -1,0 +1,6 @@
+Actions
+action type 
+action creators - Javascript functions which returns a plain object which consists of type and payload
+dispatch
+reducer
+store
