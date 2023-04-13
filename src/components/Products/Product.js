@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 
 export const Product = () => {
     const [product, setProduct] = useState({})
+    const [isProductAdded, setIsProductAdded] = useState(false)
     const { id } = useParams();
 
     const dispatch = useDispatch();
@@ -49,8 +50,9 @@ export const Product = () => {
                                     <button className='btn btn-success py-2' 
                                     onClick={()=>{
                                         dispatch(addToCart(product))
+                                        setIsProductAdded(true)
                                     }}
-                                    >Add to Cart</button>
+                                    >{isProductAdded ? "added" : "Add to Cart" }</button>
                                 </div>
                             </div>
                         </div>

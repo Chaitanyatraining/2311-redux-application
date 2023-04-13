@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { fetchProducts } from '../redux/productactions/ProductActions';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Products = () => {
-    const [products, setProducts] = useState([]);
-
+    const products = useSelector((state) => state.productsData.products)
+    const dispatch = useDispatch();
+   
+   
     useEffect(() => {
-        getProductsData();
+      dispatch(fetchProducts())
     }, [])
 
-    const getProductsData = async () => {
-        const response = await fetch('https://fakestoreapi.com/products');
-        const data = await response.json();
-        setProducts(data);
-        console.log(products)
-    }
+    // synchronous action creators
+    // immediately return the action object with type and payload
+    //asynchronous action creators
+    // Takes some amount of time to return the action object with type and payload
 
     return (
         <>
